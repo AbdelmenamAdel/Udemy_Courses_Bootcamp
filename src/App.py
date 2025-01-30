@@ -6,16 +6,16 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Load preprocessed data, encoders, scaler, and model
-def load_resources():
-    base_path = os.path.dirname(os.path.abspath(__file__))  # Get the script directory
-    workspace_path = os.path.join(base_path, "workspace")  # Construct absolute path
-
-    le_title = joblib.load(os.path.join(workspace_path, "le_title.pkl"))
-    le_wishlist = joblib.load(os.path.join(workspace_path, "le_wishlist.pkl"))
-    scaler = joblib.load(os.path.join(workspace_path, "scaler.pkl"))
-
-    return le_title, le_wishlist, scaler
-
+def load_resources():   
+    # Load encoders and scaler
+    le_title = joblib.load('../workspace/le_title.pkl')
+    le_wishlist = joblib.load('../workspace/le_wishlist.pkl')
+    scaler = joblib.load('../workspace/scaler.pkl')
+    
+    # Load model
+    model = joblib.load('../workspace/rf_model.pkl')
+    
+    return le_title, le_wishlist, scaler, model
 
 def main():
     st.title('Udemy Course Rating Prediction')
